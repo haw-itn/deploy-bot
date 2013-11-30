@@ -7,3 +7,5 @@ gem 'cinch'
 gem 'nokogiri'
 
 gem 'mongoid'
+
+gem 'rjb'
