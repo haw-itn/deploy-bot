@@ -2,9 +2,11 @@ GEM
   remote: http://bundler-api.herokuapp.com/
   specs:
     cinch (2.0.10)
+    nokogiri (1.5.9)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   cinch
+  nokogiri
