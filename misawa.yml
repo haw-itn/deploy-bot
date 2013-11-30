@@ -1,0 +1,6 @@
+development:
+  sessions:
+    default:
+      database: mongo-misawa
+      hosts:
+        - localhost:27017
