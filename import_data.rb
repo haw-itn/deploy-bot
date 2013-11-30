@@ -1,14 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'rubygems'
-require 'mongoid'
 
-Mongoid.load!('misawa.yml', 'development')
-
-class Misawa
-  include Mongoid::Document
-  field :src, type: String
-  field :alt, type: String
-end
+load './misawa_good_thing.rb'
 
 misawa_datas = [{src: "http://img-cdn.jg.jugem.jp/a64/1131071/20131129_874168.gif", alt: "ようやく気付いたか新人！俺はなんだかんだでやることやってる奴じゃねえ！マジで役に立たねえんだ！"},
 {src: "http://img-cdn.jg.jugem.jp/a64/1131071/20131128_872645.gif", alt: "っけね～本当の気持ちを押し殺して親友２人の恋路を後押ししちゃったよ"},
@@ -58,15 +51,15 @@ misawa_datas = [{src: "http://img-cdn.jg.jugem.jp/a64/1131071/20131129_874168.gi
 {src: "http://jigokuno.img.jugem.jp/20130924_785049.gif", alt: "あ～呆れる\r\nホンット自分に呆れるせっかくみんなで海来てんのに音楽のことばっか考えてんだぜ？"},
 {src: "http://jigokuno.img.jugem.jp/20130923_783617.gif", alt: "元々会社が休みの日に仕事を休んでも仕事を休んだ気にはならねえんだよ！"},]
 
-# misawa_datas.each do |mi|
-#   Misawa.new(mi).save
-# end
+misawa_datas.each do |mi|
+  MisawaGoodThing.new(mi).save
+end
 p "---"
-Misawa.any_of(alt: /.*僕.*/).each do |m|
+MisawaGoodThing.any_of(alt: /.*僕.*/).each do |m|
   p m
 end
 
-p Misawa.any_of(alt: /.*僕.*/).sample
+p MisawaGoodThing.any_of(alt: /.*僕.*/).sample
 # Misawa.all.each do |m|
 #   p m
 # end

@@ -1,20 +1,9 @@
 # -*- coding: utf-8 -*-
 require 'rubygems'
 require 'cinch'
-require 'mongoid'
-
-
 require 'rjb'
 
-
-Mongoid.load!('misawa.yml', 'development')
-class Misawa
-  include Mongoid::Document
-  field :src, type: String
-  field :alt, type: String
-end
-
-
+load './misawa_good_thing.rb'
 
 module  JavaIterator
   def each
@@ -28,8 +17,6 @@ end
 Rjb::load('lib/kuromoji-0.7.7.jar')
 
 Tokenizer = Rjb::import('org.atilika.kuromoji.Tokenizer')
-
-# @tknizer = Tokenizer.builder.build
 
 def tokenize sentence
   list = Tokenizer.builder.build.tokenize(sentence)
@@ -64,7 +51,7 @@ bot = Cinch::Bot.new do
     end
     nouns.sample
 
-    good_thing = Misawa.any_of(alt: /.*#{nouns.sample}.*/).sample
+    good_thing = MisawaGoodThing.any_of(alt: /.*#{nouns.sample}.*/).sample
 
     m.reply "#{good_thing.alt}"
     m.reply "#{good_thing.src}"
