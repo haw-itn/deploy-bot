@@ -1,0 +1,10 @@
+GEM
+  remote: http://bundler-api.herokuapp.com/
+  specs:
+    cinch (2.0.10)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  cinch
