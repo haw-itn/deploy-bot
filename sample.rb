@@ -50,12 +50,15 @@ bot = Cinch::Bot.new do
     tokenize(m.message).each do |t|
       nouns << t.surface_form if t.part_of_speech.include? "名詞"
     end
-    nouns.sample
+    noun = nouns.sample
 
-    good_thing = MisawaGoodThing.any_of(alt: /.*#{nouns.sample}.*/).sample
+    unless noun.nil? || noun.empty?
 
-    m.reply "#{good_thing.alt}"
-    m.reply "#{good_thing.src}"
+      good_thing = MisawaGoodThing.any_of(alt: /.*#{nouns.sample}.*/).sample
+
+      m.reply "#{good_thing.alt}"
+      m.reply "#{good_thing.src}"
+    end
   end
 
 end
