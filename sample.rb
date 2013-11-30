@@ -39,6 +39,7 @@ bot = Cinch::Bot.new do
   configure do |c|
     c.server = "192.168.0.221"
     c.channels = ["#sd"]
+    c.nick = 'misawa_bot'
     c.plugins.plugins = [MisawaBot]
   end
 
