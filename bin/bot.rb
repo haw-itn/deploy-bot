@@ -6,28 +6,14 @@ require 'cinch'
 require 'rjb'
 
 load './misawa_good_thing.rb'
+load './lib/kuromoji.rb'
 
-module  JavaIterator
-  def each
-    i = self.iterator
-    while i.has_next
-      yield i.next
-    end
-  end
-end
 
-Rjb::load('lib/kuromoji-0.7.7.jar')
-
-Tokenizer = Rjb::import('org.atilika.kuromoji.Tokenizer')
-
-def tokenize sentence
-  list = Tokenizer.builder.build.tokenize(sentence)
-  list.extend JavaIterator
-end
 
 
 class MisawaBot
   include Cinch::Plugin
+  include Kuromoji::Core
 
   match /.*/, use_prefix: false
 
