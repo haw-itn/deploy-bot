@@ -27,25 +27,9 @@ end
 class MisawaBot
   include Cinch::Plugin
 
-  match "a"
+  match /.*/, use_prefix: false
 
   def execute(m)
-    m.reply "test"
-  end
-end
-
-
-bot = Cinch::Bot.new do
-  configure do |c|
-    c.server = "192.168.0.221"
-    c.channels = ["#sd"]
-    c.nick = 'misawa_bot'
-    c.plugins.plugins = [MisawaBot]
-  end
-
-
-  on :message, /.*/ do |m|
-
     nouns = []
     tokenize(m.message).each do |t|
       nouns << t.surface_form if t.part_of_speech.include? "名詞"
@@ -59,8 +43,18 @@ bot = Cinch::Bot.new do
       m.reply "#{good_thing.alt}"
       m.reply "#{good_thing.src}"
     end
-  end
 
+  end
+end
+
+
+bot = Cinch::Bot.new do
+  configure do |c|
+    c.server = "192.168.0.221"
+    c.channels = ["#sd"]
+    c.nick = 'misawa_bot'
+    c.plugins.plugins = [MisawaBot]
+  end
 end
 
 bot.start
