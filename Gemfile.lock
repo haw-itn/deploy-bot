@@ -1,12 +1,30 @@
 GEM
   remote: http://bundler-api.herokuapp.com/
   specs:
+    activemodel (3.2.15)
+      activesupport (= 3.2.15)
+      builder (~> 3.0.0)
+    activesupport (3.2.15)
+      i18n (~> 0.6, >= 0.6.4)
+      multi_json (~> 1.0)
+    builder (3.0.4)
     cinch (2.0.10)
+    i18n (0.6.5)
+    mongoid (3.1.5)
+      activemodel (~> 3.2)
+      moped (~> 1.4)
+      origin (~> 1.0)
+      tzinfo (~> 0.3.29)
+    moped (1.5.1)
+    multi_json (1.8.2)
     nokogiri (1.5.9)
+    origin (1.1.0)
+    tzinfo (0.3.38)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   cinch
+  mongoid
   nokogiri

@@ -5,3 +5,5 @@ source "http://bundler-api.herokuapp.com"
 gem 'cinch'
 
 gem 'nokogiri'
+
+gem 'mongoid'
